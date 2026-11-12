@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Beranda | ZAKORA{% endblock %}
+
+{% block content %}
+
+<section class="hero text-center">
+    <h1>Selamat Datang di ZAKORA</h1>
+    <p>Temukan berbagai kebutuhan kuliahmu dalam satu tempat.</p>
+
+    <a href="{{ url_for('produk') }}" class="btn btn-dark mt-3">
+        Lihat Produk
+    </a>
+</section>
+
+<section class="mt-5">
+    <h2 class="text-center mb-4">Kenapa Memilih ZAKORA?</h2>
+
+    <div class="row text-center">
+        <div class="col-md-4">
+            <h5>Produk Berkualitas</h5>
+            <p>Menyediakan perlengkapan mahasiswa berkualitas.</p>
+        </div>
+
+        <div class="col-md-4">
+            <h5>Harga Terjangkau</h5>
+            <p>Belanja kebutuhan kuliah tanpa menguras kantong.</p>
+        </div>
+
+        <div class="col-md-4">
+            <h5>Mudah dan Praktis</h5>
+            <p>Temukan kebutuhanmu dengan mudah melalui ZAKORA.</p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

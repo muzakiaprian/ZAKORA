@@ -1,0 +1,65 @@
+/* Pengaturan dasar */
+body {
+    background-color: #f4f6f9;
+    color: #212529;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Konten utama */
+main {
+    flex: 1;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    margin-left: 12px;
+}
+
+/* Halaman beranda */
+.hero {
+    background: linear-gradient(135deg, #212529, #495057);
+    color: white;
+    padding: 80px 20px;
+    border-radius: 15px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    font-weight: bold;
+}
+
+/* Kartu produk */
+.card {
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Halaman tentang */
+.about-box {
+    background: linear-gradient(135deg, #212529, #495057);
+    color: white;
+    border-radius: 15px;
+}
+
+/* Tombol */
+.btn {
+    border-radius: 8px;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+}

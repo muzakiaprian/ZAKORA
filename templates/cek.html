@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Cek Username | ZAKORA{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-5 text-center">
+
+                <h2 class="mb-4">Hasil Pengecekan Username</h2>
+
+                <h4 class="mb-3">Username: {{ username }}</h4>
+
+                {% if not valid %}
+                    <div class="alert alert-danger">
+                        Username tidak valid. Minimal harus 4 karakter.
+                    </div>
+
+                {% elif tersedia %}
+                    <div class="alert alert-success">
+                        Username tersedia dan dapat digunakan.
+                    </div>
+
+                {% else %}
+                    <div class="alert alert-warning">
+                        Username sudah digunakan. Silakan pilih username lain.
+                    </div>
+                {% endif %}
+
+                <a href="{{ url_for('beranda') }}" class="btn btn-dark mt-3">
+                    Kembali ke Beranda
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
