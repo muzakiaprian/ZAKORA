@@ -1,0 +1,132 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Kelola Produk - ZAKORA{% endblock %}
+
+{% block page_heading %}Kelola Produk{% endblock %}
+
+{% block content %}
+
+<style>
+    .product-admin-card {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .product-admin-card h2 {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .product-table-wrapper {
+        overflow-x: auto;
+    }
+
+    .product-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px;
+    }
+
+    .product-table th,
+    .product-table td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+
+    .product-table th {
+        background: #f8f9fa;
+        color: #333;
+    }
+
+    .product-table tr:hover {
+        background: #f8f9fa;
+    }
+
+    .stock-badge {
+        padding: 6px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .stock-available {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .stock-empty {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .product-count {
+        margin-bottom: 20px;
+        color: #6c757d;
+    }
+
+    @media (max-width: 600px) {
+        .product-admin-card {
+            padding: 15px;
+        }
+
+        .product-table th,
+        .product-table td {
+            padding: 10px;
+        }
+    }
+</style>
+
+<div class="product-admin-card">
+
+    <h2>Daftar Produk</h2>
+
+    <p class="product-count">
+        Total produk terdaftar: <strong>{{ produk|length }}</strong>
+    </p>
+
+    <div class="product-table-wrapper">
+
+        <table class="product-table">
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama Produk</th>
+                    <th>Harga</th>
+                    <th>Stok</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for p in produk %}
+                <tr>
+                    <td>{{ p.id }}</td>
+                    <td>{{ p.nama }}</td>
+                    <td>Rp {{ "{:,.0f}".format(p.harga).replace(",", ".") }}</td>
+                    <td>{{ p.stok }}</td>
+                    <td>
+                        {% if p.stok > 0 %}
+                            <span class="stock-badge stock-available">
+                                Tersedia
+                            </span>
+                        {% else %}
+                            <span class="stock-badge stock-empty">
+                                Habis
+                            </span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

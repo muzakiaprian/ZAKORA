@@ -13,6 +13,25 @@ PRODUK = {
     4: {"id": 4, "nama": "Flashdisk 32GB", "harga": 65000, "stok": 8}
 }
 
+# DATA ADMIN
+ADMIN = {
+    "nama": "ZAKORA Admin",
+    "role": "Administrator"
+}
+
+# DATA PENGGUNA
+PENGGUNA = [
+    {"nama": "Zaki", "username": "zaki"},
+    {"nama": "Bondan", "username": "bondan"}
+]
+
+# DATA PENJUALAN (SIMULASI)
+PENJUALAN = [
+    {"produk": "Buku Catatan", "jumlah": 5, "total": 75000},
+    {"produk": "Pulpen Gel Hitam", "jumlah": 3, "total": 24000},
+    {"produk": "Flashdisk 32GB", "jumlah": 2, "total": 130000}
+]
+
 
 # BERANDA
 @app.route("/")
@@ -82,6 +101,36 @@ def detail_produk(id):
 @app.route("/home")
 def home_lama():
     return redirect(url_for("beranda"))
+
+
+# ADMIN DASHBOARD
+@app.route("/admin")
+def admin_dashboard():
+    total_produk = len(PRODUK)
+    total_pengguna = len(PENGGUNA)
+    total_penjualan = sum(item["total"] for item in PENJUALAN)
+    total_item_terjual = sum(item["jumlah"] for item in PENJUALAN)
+
+    return render_template(
+        "admin/dashboard.html",
+        admin=ADMIN,
+        total_produk=total_produk,
+        total_pengguna=total_pengguna,
+        total_penjualan=total_penjualan,
+        total_item_terjual=total_item_terjual,
+        penjualan=PENJUALAN
+    )
+
+
+# ADMIN PRODUK
+@app.route("/admin/produk")
+def admin_produk():
+    daftar_produk = list(PRODUK.values())
+
+    return render_template(
+        "admin/produk.html",
+        produk=daftar_produk
+    )
 
 
 # CUSTOM ERROR 404
